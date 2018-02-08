@@ -237,7 +237,7 @@
 <pre><code class="language-console">az ad sp create-for-rbac --name osba-quickstart -o table
 </code></pre>
 
-<p>This will give you a bunch of out put for the newly created service principle. You&rsquo;ll need to have these later, so make them into environment variables. OSBA will use them to create resoruces in your Azure account. The resource group is also important so you can keep track of the resources that you&rsquo;ll create with OSBA. Normal deprovisioning should take care of them, but if you accidently remove PCF before you deprovision, you&rsquo;ll be able to easily find them.</p>
+<p>This will give you a bunch of out put for the newly created service principle. You&rsquo;ll need to have these later, so make them into environment variables. OSBA will use them to create resoruces in your Azure account. You&rsquo;ll want to match the values in the table output to the export statements below.</p>
 
 <pre><code class="language-console">export AZURE_TENANT_ID=&lt;Tenant&gt;
 export AZURE_CLIENT_ID=&lt;AppId&gt;
