@@ -352,7 +352,7 @@ applications:
     GO_INSTALL_PACKAGE_SPEC: github.com/Azure/open-service-broker-azure/cmd/broker
 </code></pre>
 
-<p>Some of these you already have thanks to the account setup we did above. The Redis information you&rsquo;ll need to get by binding OSBA to the Redis service we created above. Once we have those, we&rsquo;ll use <code>cf set-env</code> to change the environment.</p>
+<p>Some of these you already have thanks to the account setup we did above. The Redis information you&rsquo;ll need to get by binding OSBA to the Redis service we created above. Once we have those, we&rsquo;ll use <code>cf set-env</code> to change the environment. You can modify this file and replace the values, but we&rsquo;ll use the <code>cf set-env</code> command to do that in a bit. Note that if you were deploying this for production use, you&rsquo;d want to change things like the AES256_KEY and the basic auth credentials.</p>
 
 <p>First, let&rsquo;s push OSBA.</p>
 
