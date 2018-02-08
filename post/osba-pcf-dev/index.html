@@ -220,37 +220,35 @@
 
 <p>Once those are taken care of, let&rsquo;s setup our environment to use the Azure account.</p>
 
-<ol>
-<li>Run <code>az login</code> and follow the instructions in the command output to authorize <code>az</code> to use your account</li>
+<p>Start by running <code>az login</code> and follow the instructions in the command output to authorize <code>az</code> to use your account</p>
 
-<li><p>List your Azure subscriptions:</p>
+<p>Next, list your Azure subscriptions:</p>
 
 <pre><code class="language-console">az account list -o table
-</code></pre></li>
+</code></pre>
 
-<li><p>Copy your subscription ID and save it in an environment variable:</p>
+<p>Once you&rsquo;ve decided which to use, copy your subscription ID and save it in an environment variable:</p>
 
 <pre><code class="language-console">export AZURE_SUBSCRIPTION_ID=&quot;&lt;SubscriptionId&gt;&quot;
-</code></pre></li>
+</code></pre>
 
-<li><p>Create a resource group to contain the resources you&rsquo;ll create with OSBA</p>
-
-<pre><code class="language-console">az group create --name cf-osba --location eastus
-</code></pre></li>
-
-<li><p>Create a service principle for OSBA to use and export the results for later use</p>
+<p>Now, you need to create a service principle for OSBA to use and export the results for later use</p>
 
 <pre><code class="language-console">az ad sp create-for-rbac --name osba-quickstart -o table
 
 export AZURE_TENANT_ID=&lt;Tenant&gt;
 export AZURE_CLIENT_ID=&lt;AppId&gt;
 export AZURE_CLIENT_SECRET=&lt;Password&gt;
-</code></pre></li>
-</ol>
+</code></pre>
 
 <p>We will need those environment variables when we run OSBA later. OSBA will use them to create resoruces in your Azure account. The resource group is also important so you can keep track of the resources that you&rsquo;ll create with OSBA. Normal deprovisioning should take care of them, but if you accidently remove PCF before you deprovision, you&rsquo;ll be able to easily find them.</p>
 
-<p>Next, let&rsquo;s start up PCF Dev. If you haven&rsquo;t already installed it, <a href="https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/install-pcf-dev">do that</a> now. You should be able to start it with the default options.</p>
+<p>Finally, create a resource group to contain the resources you&rsquo;ll create with OSBA</p>
+
+<pre><code class="language-console">az group create --name cf-osba --location eastus
+</code></pre>
+
+<p>Next, let&rsquo;s setup up PCF Dev. If you haven&rsquo;t already installed it, <a href="https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/install-pcf-dev">do that</a> now. You should be able to start it with the default options.</p>
 
 <pre><code class="language-console">cf dev start
 </code></pre>
