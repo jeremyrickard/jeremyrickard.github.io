@@ -235,20 +235,21 @@
 <p>Now, you need to create a service principle for OSBA to use and export the results for later use</p>
 
 <pre><code class="language-console">az ad sp create-for-rbac --name osba-quickstart -o table
+</code></pre>
 
-export AZURE_TENANT_ID=&lt;Tenant&gt;
+<p>This will give you a bunch of out put for the newly created service principle. You&rsquo;ll need to have these later, so make them into environment variables. OSBA will use them to create resoruces in your Azure account. The resource group is also important so you can keep track of the resources that you&rsquo;ll create with OSBA. Normal deprovisioning should take care of them, but if you accidently remove PCF before you deprovision, you&rsquo;ll be able to easily find them.</p>
+
+<pre><code class="language-console">export AZURE_TENANT_ID=&lt;Tenant&gt;
 export AZURE_CLIENT_ID=&lt;AppId&gt;
 export AZURE_CLIENT_SECRET=&lt;Password&gt;
 </code></pre>
 
-<p>We will need those environment variables when we run OSBA later. OSBA will use them to create resoruces in your Azure account. The resource group is also important so you can keep track of the resources that you&rsquo;ll create with OSBA. Normal deprovisioning should take care of them, but if you accidently remove PCF before you deprovision, you&rsquo;ll be able to easily find them.</p>
-
-<p>Finally, create a resource group to contain the resources you&rsquo;ll create with OSBA</p>
+<p>Finally, create a resource group to contain the resources you&rsquo;ll create with OSBA. If you don&rsquo;t provide one, OSBA will make one up for you, but this is much easier to manage later on.</p>
 
 <pre><code class="language-console">az group create --name cf-osba --location eastus
 </code></pre>
 
-<p>Next, let&rsquo;s setup up PCF Dev. If you haven&rsquo;t already installed it, <a href="https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/install-pcf-dev">do that</a> now. You should be able to start it with the default options.</p>
+<p>At this point, everything related to our Azure account is done. Next, let&rsquo;s setup up PCF Dev. If you haven&rsquo;t already installed it, <a href="https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/install-pcf-dev">do that</a> now. You should be able to start it with the default options.</p>
 
 <pre><code class="language-console">cf dev start
 </code></pre>
