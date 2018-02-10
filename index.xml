@@ -6,10 +6,21 @@
     <description>Recent content on jeremy doing things</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Feb 2018 08:23:38 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 09 Feb 2018 21:53:28 -0700</lastBuildDate>
     
 	<atom:link href="https://jeremyrickard.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Fun With ACI</title>
+      <link>https://jeremyrickard.github.io/post/fun-with-aci/</link>
+      <pubDate>Fri, 09 Feb 2018 21:53:28 -0700</pubDate>
+      
+      <guid>https://jeremyrickard.github.io/post/fun-with-aci/</guid>
+      <description>Friday is a pretty good day. It&amp;rsquo;s the end of the week and the Azure Containers team has a show and tell with fun demos and people share rants. Today there were also bunch of jokes about clippy which resulted in a bunch of hilarious art from http://textart.io/cowsay/clippy.
+.@arschles is my hero 🤣 pic.twitter.com/LfYXmde3DE
+&amp;mdash; jessie frazelle (@jessfraz) February 9, 2018  Then there were jokes that we needed a bot.</description>
+    </item>
     
     <item>
       <title>Using Open Service Broker for Azure with PCF Dev</title>
