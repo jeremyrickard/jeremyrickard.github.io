@@ -272,7 +272,7 @@ premium                           azure-rediscache           Premium Tier, 6GB C
 
 <p>To create my DocumentDB instance with <code>svcat</code>, I ran the following command.</p>
 
-<pre><code>$ svcat provision osba-documentdb --class  azure-cosmos-document-db --plan document-db -p location=eastus
+<pre><code class="language-console">$ svcat provision osba-documentdb --class  azure-cosmos-document-db --plan document-db -p location=eastus
 Name:        osba-documentdb
   Namespace:  default
   Status:
@@ -282,7 +282,7 @@ Name:        osba-documentdb
 
 <p>I can then view the status with <code>svcat</code> like so.</p>
 
-<pre><code class="language-console"> svcat get instances
+<pre><code class="language-console">$ svcat get instances
             NAME              NAMESPACE              CLASS                PLAN          STATUS
 +--------------------------+--------------+--------------------------+-------------+--------------+
   osba-documentdb   osba-example   azure-cosmos-document-db   document-db   Provisioning
@@ -290,7 +290,7 @@ Name:        osba-documentdb
 
 <p>Almost all brokers will do an asynchronous provision operation, and OSBA is no different. You see the status here provided as <code>Provisioning</code>. After a few minutes, it should be finished if all went well.</p>
 
-<pre><code class="language-console">svcat get instances
+<pre><code class="language-console">$ svcat get instances
             NAME              NAMESPACE              CLASS                PLAN       STATUS
 +--------------------------+--------------+--------------------------+-------------+--------+
   osba-documentdb   default   azure-cosmos-document-db   document-db   Ready
