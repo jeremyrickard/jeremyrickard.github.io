@@ -73,10 +73,10 @@
 					<section>
 						<pre>
 							<code data-trim data-noescape>
-				dependenciess:
+				dependencies:
 					- name: postgresql
 					version: 0.8.7
-					repository: https://kubernetes-charts.storage.googleapis.com/
+					repository: .....
 							</code>
 						</pre>
 					</section>
@@ -246,11 +246,11 @@ spec:
 					
 					<pre>
 							<code data-trim data-noescape>
-				dependenciess:
+				dependencies:
 					- name: postgresql
 					version: 0.8.7
 					condition: postgresql.local
-					repository: https://kubernetes-charts.storage.googleapis.com/
+					repository: ....
 							</code>
 						</pre>
 						<pre>
@@ -258,8 +258,15 @@ spec:
 				{{- if not .Values.postgresql.local }}
 				apiVersion: servicecatalog.k8s.io/v1beta1
 				kind: ServiceInstance
+				......
+				{{- end }}
 							</code>
 						</pre>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Make reusable charts for your teams
+					</textarea>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
