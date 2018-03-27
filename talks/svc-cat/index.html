@@ -93,15 +93,12 @@
 ==> v1/Secret
 NAME                    TYPE    DATA  AGE
 artifactory-postgresql  Opaque  1     1s
-
 ==> v1/PersistentVolumeClaim
 NAME                     STATUS   VOLUME   CAPACITY  ACCESS MODES  STORAGECLASS  AGE
 artifactory-postgresql   Pending  default  1s
-
 ==> v1/Service
-NAME                           TYPE          CLUSTER-IP    EXTERNAL-IP  PORT(S)                     AGE
-artifactory-postgresql         ClusterIP     10.0.144.178  <none>       5432/TCP                    1s
-
+NAME                           TYPE          CLUSTER-IP    EXTERNAL-IP  PORT(S)     AGE
+artifactory-postgresql         ClusterIP     10.0.144.178  <none>       5432/TCP    1s
 ==> v1beta1/Deployment
 NAME                           DESIRED  CURRENT  UP-TO-DATE  AVAILABLE  AGE
 artifactory-postgresql         1        1        1           0          1s
@@ -110,6 +107,11 @@ artifactory-postgresql         1        1        1           0          1s
 				</section>
 				</section>
 				<section>
+					<section data-markdown>
+						<textarea data-template>
+						### Stateful things can be hard
+						</textarea>
+					</section>
 					<section>
 						<div class="tweet" data-src="https://twitter.com/kelseyhightower/status/963413508300812295" style="margin: 0px; position: absolute; left: 50%; transform: translate(-50%, 0%);"><blockquote class="twitter-tweet twitter-tweet-error" data-lang="en" data-twitter-extracted-i1522030506752952507="true"><a href="https://twitter.com/kelseyhightower/status/963413508300812295">Tweet</a></blockquote></div>
 					</section>
@@ -147,6 +149,15 @@ artifactory-postgresql         1        1        1           0          1s
 							* Update
 							* Unbind
 							* Deprovision
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							* [GCP](https://github.com/GoogleCloudPlatform/gcp-service-broker)
+							* [Azure](https://github.com/Azure/open-service-broker-azure)
+							* [Red Hat Automation](http://automationbroker.io/)
+							* [AWS](https://aws.amazon.com/blogs/apn/aws-service-broker-bridging-the-gulf-between-on-premises-and-aws/)
+							* [Mini Broker](https://github.com/osbkit/minibroker)
 						</textarea>
 					</section>
 				</section>
@@ -206,20 +217,49 @@ artifactory-postgresql         1        1        1           0          1s
 					### To helm and back
 					</textarea>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### svc-cat resources are just resources
-					</textarea>
+				<section>
+					svc-cat resources are just resources
+					<pre>
+							<code data-trim data-noescape>
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceInstance
+metadata:
+  name: {{ template "concourse.concourse.fullname" . }}-postgres-instance
+  labels:
+    app: {{ template "concourse.concourse.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  clusterServiceClassExternalName: azure-postgresql
+  clusterServicePlanExternalName: {{ .Values.postgresql.azure.servicePlan }}
+  parameters:
+    location: {{ .Values.postgresql.azure.location }}
+    resourceGroup: {{ .Release.Namespace }}
+    sslEnforcement: disabled
+  						</code>
+					</pre>
 				</section>
-				<section data-markdown>
-					<textarea data-template>
-						### Use conditionals: svc-cat or not
-					</textarea>
-				</section>
-				]<section data-markdown>
-					<textarea data-template>
-						### Use the secret
-					</textarea>
+				<section>
+					
+					Use conditionals: svc-cat or not
+					
+					<pre>
+							<code data-trim data-noescape>
+				dependenciess:
+					- name: postgresql
+					version: 0.8.7
+					condition: postgresql.local
+					repository: https://kubernetes-charts.storage.googleapis.com/
+							</code>
+						</pre>
+						<pre>
+							<code data-trim data-noescape>
+				{{- if not .Values.postgresql.local }}
+				apiVersion: servicecatalog.k8s.io/v1beta1
+				kind: ServiceInstance
+							</code>
+						</pre>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
@@ -234,10 +274,20 @@ artifactory-postgresql         1        1        1           0          1s
 					</section>
 					<section data-markdown>
 						<textarea data-template>
-							### RBAC
+							### Kubectl
 						</textarea>
 					</section>
-								<section data-markdown>
+					<section data-markdown>
+						<textarea data-template>
+							### Can I namespace that?
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							### I just want a mysql?
+						</textarea>
+					</section>
+					<section data-markdown>
 						<textarea data-template>
 							### Parameters
 						</textarea>
