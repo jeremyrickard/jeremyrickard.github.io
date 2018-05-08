@@ -306,37 +306,30 @@ spec:
 <pre><code>$ k get serviceinstances
 NAME               AGE
 cosmosdb           18h
-
 </code></pre>
 
-<p>$ k get servicebindings
+<pre><code>$ k get servicebindings
 NAME               AGE
-cosmosdb           18h</p>
-
-<pre><code>
+cosmosdb           18h
 </code></pre>
 
-<p>$ k get secrets
+<pre><code>$ k get secrets
 NAME                          TYPE                                  DATA      AGE
-cosmosdb                      Opaque                                8         18h</p>
-
-<pre><code>
+cosmosdb                      Opaque                                8         18h
 </code></pre>
 
-<p>$ k get pods
+<pre><code>$ k get pods
 NAME                                                              READY     STATUS    RESTARTS   AGE
-spring-cosmos-example-spring-data-cosmos-sample-db8c65ccb-h2xdk   <sup>1</sup>&frasl;<sub>1</sub>       Running   0          18h</p>
-
-<pre><code>
-The most important part of this is the connection from that Pod to our ServiceInstance, via the Binding and the Secret!
-
+spring-cosmos-example-spring-data-cosmos-sample-db8c65ccb-h2xdk   1/1       Running   0          18h
 </code></pre>
 
-<p>Environment:
-      COSMOS_DB_URI:       <set to the key 'uri' in secret 'cosmosdb'>           Optional: false
-      COSMOS_DB_KEY:       <set to the key 'primaryKey' in secret 'cosmosdb'>    Optional: false
-      COSMOS_DB_DATABASE:  <set to the key 'databaseName' in secret 'cosmosdb'>  Optional: false
-```</p>
+<p>The most important part of this is the connection from that Pod to our ServiceInstance, via the Binding and the Secret!</p>
+
+<pre><code>Environment:
+      COSMOS_DB_URI:       &lt;set to the key 'uri' in secret 'cosmosdb'&gt;           Optional: false
+      COSMOS_DB_KEY:       &lt;set to the key 'primaryKey' in secret 'cosmosdb'&gt;    Optional: false
+      COSMOS_DB_DATABASE:  &lt;set to the key 'databaseName' in secret 'cosmosdb'&gt;  Optional: false
+</code></pre>
 
 <p>Again, these are the environment variables used in that property file up above.</p>
 
